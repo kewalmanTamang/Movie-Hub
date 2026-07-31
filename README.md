@@ -1,16 +1,133 @@
-# React + Vite
+# 🎬 Movie Hub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Movie Hub is a modern movie discovery web application built with React and the TMDB API. Users can browse popular movies, search for specific titles, view detailed information, watch trailers, explore cast members, save favorite movies, and switch between dark and light themes.
 
-Currently, two official plugins are available:
+## 🌐 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+https://movie-hub-ten-eta.vercel.app/
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Features
 
-## Expanding the ESLint configuration
+- 🔍 Search movies by title
+- 🎬 Browse popular movies
+- 📄 View detailed movie information
+- ▶️ Watch official movie trailers
+- 🎭 View top cast members
+- ❤️ Add and remove favorite movies
+- 🌙 Dark / Light theme
+- 📑 Pagination
+- 🎯 Sort movies by:
+  - Popularity
+  - Rating
+  - Release Year
+  - Title
+- 🎭 Filter movies by genre
+- 📱 Fully responsive design
+- 💾 Favorites saved using Local Storage
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Built With
+
+- React
+- Vite
+- Tailwind CSS
+- React Router DOM
+- TMDB API
+- JavaScript (ES6+)
+- Local Storage
+
+---
+
+## 📂 Project Structure
+
+```
+src
+├── Components
+│   └── Card.jsx
+├── context
+│   └── ThemeContext.jsx
+├── pages
+│   ├── Home.jsx
+│   ├── Favorites.jsx
+│   └── MovieDetails.jsx
+├── main.jsx
+└── index.css
+```
+
+---
+
+## 🚀 Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/kewalmanTamang/Movie-Hub.git
+```
+
+Go into the project folder
+
+```bash
+cd Movie-Hub
+```
+
+Install dependencies
+
+```bash
+npm install
+```
+
+Create a `.env` file in the project root and add your TMDB API token:
+
+```env
+VITE_API_TOKEN=Bearer YOUR_TMDB_API_TOKEN
+```
+
+Start the development server
+
+```bash
+npm run dev
+```
+
+---
+
+## 📸 Screenshots
+
+_Add screenshots of your application here._
+
+Example:
+
+- Home Page
+- Movie Details
+- Favorites
+- Dark Theme
+
+---
+
+## 📚 What I Learned
+
+While building this project, I learned:
+
+- React Hooks (`useState`, `useEffect`, `useContext`)
+- React Router
+- Context API
+- API Fetching
+- Async/Await
+- Local Storage
+- Component Reusability
+- Conditional Rendering
+- Pagination
+- Theme Management
+- Deployment with Vercel
+- Git & GitHub
+
+---
+
+## 👨‍💻 Author
+
+**Kewal Man Tamang**
+
+GitHub:
+https://github.com/kewalmanTamang
