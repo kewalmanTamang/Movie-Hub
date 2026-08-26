@@ -1,11 +1,12 @@
 import {useState, useEffect, useContext} from "react"; 
 import Card from "../Components/Card";
-import {Link} from "react-router-dom"; 
 import { ThemeContext } from "../context/ThemeContext";
+import { useSelector } from "react-redux";
 
 
 function Favorites(){
- 
+ const favoriteIds = useSelector((state) => state.favorites.ids)
+
   const [favoriteMovies, setFavoritesMovies] = useState([]); 
   const [loading, setLoading] = useState(true); 
 
@@ -16,8 +17,6 @@ function Favorites(){
   useEffect(()=>{
 
    const fetchFavoriteMovies = async() =>{
-     const favoriteIds = 
-    JSON.parse(localStorage.getItem("favorites")) || [];
 
     const movies = await Promise.all(
       favoriteIds.map(async (id)=>{
@@ -35,9 +34,7 @@ function Favorites(){
     setLoading(false);
    }
  fetchFavoriteMovies();
-  },[])
-
-
+  },[favoriteIds])
 
 if(loading){
   return(
@@ -63,7 +60,6 @@ if(favoriteMovies.length === 0){
     </div>
   )
 }
-
   return (
  <div
   className={`min-h-screen p-8 transition-colors duration-300 ${
@@ -92,6 +88,7 @@ poster={
   ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
   : "https://placehold.co/500x750?text=No+Image"
  }
+ isFavorite={true}
 />)})}
     </div>
   </div>

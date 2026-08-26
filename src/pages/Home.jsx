@@ -1,11 +1,12 @@
 import { useState, useEffect,useContext } from 'react'
 import Card from "../Components/Card";
 import {Link } from "react-router-dom";
-
+import { useSelector } from 'react-redux';
 import { ThemeContext } from '../context/ThemeContext';
 
 function Home() {
 
+const [toast, setToast] = useState("");
 
 const [movies, setMovies] =useState([]);
 const [loading, setLoading] =useState(true); 
@@ -18,14 +19,14 @@ const [sortBy, setSortBy] = useState("Popularity");
 const [genre, setGenre] =useState("All");
 
 const {theme, toggleTheme} = useContext(ThemeContext);
-const [favorites, setFavorites] = useState(() =>{
-  const savedFavorites = localStorage.getItem("favorites");
-  return savedFavorites ?JSON.parse(savedFavorites) :[];
-});
+
+const favoriteIds = useSelector(
+  (state) => state.favorites.ids
+)
 
 
 const genreMap = {
-   28: "Action",
+  28: "Action",
   12: "Adventure",
   16: "Animation",
   35: "Comedy",
@@ -45,25 +46,11 @@ const genreMap = {
   37: "Western",
 }
 
-function toggleFavorite(movieId){
- const isFavorite = favorites.includes(movieId); 
- if(isFavorite){
-  setFavorites(favorites.filter((id)=> id !== movieId));
- } else{
-  setFavorites([...favorites, movieId]);
- }
-}
-
- useEffect(() =>{
-  localStorage.setItem("favorites", JSON.stringify(favorites)); 
-},[favorites]);
-
 useEffect(()=>{
  const fetchMovies = async () =>{
  const API_TOKEN = import.meta.env.VITE_API_TOKEN;
 setError("");
 setLoading(true);
-
   let url="";
   if(query ===""){
     url =`https://api.themoviedb.org/3/movie/popular?page=${page}`;
@@ -80,9 +67,7 @@ setLoading(true);
  if(!response.ok){
   throw new Error("Failed to fetch movies");
  }
-
   const data = await response.json();
-
   setMovies(data.results); 
 
   }  catch(error){
@@ -121,7 +106,6 @@ if(loading){
     </div>
   );
 }
-
 if(error){
   return(
     <div className='min-h-screen flex justify-center items-center'>
@@ -220,8 +204,7 @@ sortedMovies.map((movie)=>(
   ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
   : "https://placehold.co/500x750?text=No+Image"
  }
- isFavorite ={favorites.includes(movie.id)}
- toggleFavorite={toggleFavorite}
+ isFavorite ={favoriteIds.includes(movie.id)}
  movieId={movie.id}
  />
 </Link>
@@ -249,7 +232,10 @@ sortedMovies.map((movie)=>(
   </button>
 </div>
 
- </div>
+ </div>{toast &&(
+  <div className='fixed bottom-5 right-5 bg-green-600 text-white px-5 py-3 rounded-lg shadow-lg animate-bounce'>{toast}</div>
+ )
+ }
     </>
   )
 }
