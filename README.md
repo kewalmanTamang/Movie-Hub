@@ -95,15 +95,11 @@ npm run dev
 ---
 
 ## 📸 Screenshots
+<img width="645" height="665" alt="image" src="https://github.com/user-attachments/assets/be508e64-137e-47dd-baa9-ec4cc098f57b" />
+<img width="1290" height="851" alt="image" src="https://github.com/user-attachments/assets/67b8c638-f4d7-4940-b9ba-5ebc861c69a2" />
+<img width="1877" height="862" alt="image" src="https://github.com/user-attachments/assets/c6a49cf0-9eea-4239-a26f-711aaff04ff1" />
 
-_Add screenshots of your application here._
 
-Example:
-
-- Home Page
-- Movie Details
-- Favorites
-- Dark Theme
 
 ---
 
