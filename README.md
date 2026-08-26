@@ -38,6 +38,7 @@ https://movie-hub-ten-eta.vercel.app/
 - TMDB API
 - JavaScript (ES6+)
 - Local Storage
+- Redux toolkit
 
 ---
 
